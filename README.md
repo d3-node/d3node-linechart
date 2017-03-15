@@ -30,7 +30,7 @@ npm run build
 
 ## API
 
-### d3nLine(data[, selector, container, style])
+### d3nLine({ data[, selector, container, style] })
 
 #### options
 
