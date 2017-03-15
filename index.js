@@ -19,8 +19,6 @@ function line({
 
   const d3 = d3n.d3;
 
-  // adapted from: https://bl.ocks.org/mbostock/3883245
-
   const margin = { top: 20, right: 20, bottom: 60, left: 30 };
   const width = 960 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
@@ -34,7 +32,7 @@ function line({
   const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
 
-  const x = d3.scaleTime()
+  const x = d3.scaleLinear()
       .rangeRound([0, width]);
 
   const y = d3.scaleLinear()
@@ -50,8 +48,7 @@ function line({
   g.append('g')
     .attr('transform', `translate(0, ${height})`)
     .call(d3.axisBottom(x))
-    .select('.domain')
-    .remove();
+    .select('.domain');
 
   g.append('g')
     .call(d3.axisLeft(y))
@@ -59,16 +56,12 @@ function line({
     .attr('fill', '#000')
     .attr('transform', 'rotate(-90)')
     .attr('y', 6)
-    .attr('dy', '0.71em')
-    .attr('text-anchor', 'end')
-    .text('Price ($)');
+    .attr('dy', '0.71em');
 
   g.append('path')
     .datum(data)
     .attr('fill', 'none')
     .attr('stroke', 'steelblue')
-    .attr('stroke-linejoin', 'round')
-    .attr('stroke-linecap', 'round')
     .attr('stroke-width', 1.5)
     .attr('d', lineChart);
 

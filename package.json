@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "D3-Node example - LineChart",
   "main": "index.js",
-    "scripts": {
+  "scripts": {
     "start": "node .",
     "build": "node ./example/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +21,7 @@
   ],
   "author": "geekplux <geekplux@gmail.com>",
   "license": "MIT",
-    "dependencies": {
+  "dependencies": {
     "d3-node": "1.0.0",
     "d3node-output": "0.0.1"
   }
