@@ -1,19 +1,20 @@
 const D3Node = require('d3-node');
 
-const defaultContainer = `
-<div id="container">
-  <h2>Line Chart</h2>
-  <div id="chart"></div>
-</div>
-`;
-const defaultStyle = '';
-
-function line(data, selector = '#chart', container = defaultContainer, style = defaultStyle/*, options*/) {
-
+function line({
+  data,
+  selector: defaultSelector = '#chart',
+  container: defaultContainer = `
+    <div id="container">
+      <h2>Line Chart</h2>
+      <div id="chart"></div>
+    </div>
+  `,
+  style: defaultStyle = '',
+} = {}) {
   const d3n = new D3Node({
-    selector,
-    svgStyles: style,
-    container,
+    selector: defaultSelector,
+    svgStyles: defaultStyle,
+    container: defaultContainer,
   });
 
   const d3 = d3n.d3;
