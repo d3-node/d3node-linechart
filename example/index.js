@@ -7,8 +7,8 @@ const parseTime = d3.timeParse('%d-%b-%y');
 const tsvString = fs.readFileSync('data/data.tsv').toString();
 const data = d3.tsvParse(tsvString, d => {
   return {
-    date: parseTime(d.date),
-    close: +d.close,
+    key: parseTime(d.date),
+    value: +d.close,
   };
 });
 

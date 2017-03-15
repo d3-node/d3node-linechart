@@ -40,11 +40,11 @@ function line(data, selector = '#chart', container = defaultContainer, style = d
       .rangeRound([height, 0]);
 
   const lineChart = d3.line()
-      .x(d => x(d.date))
-      .y(d => y(d.close));
+      .x(d => x(d.key))
+      .y(d => y(d.value));
 
-  x.domain(d3.extent(data, d => d.date));
-  y.domain(d3.extent(data, d => d.close));
+  x.domain(d3.extent(data, d => d.key));
+  y.domain(d3.extent(data, d => d.value));
 
   g.append('g')
     .attr('transform', `translate(0, ${height})`)
