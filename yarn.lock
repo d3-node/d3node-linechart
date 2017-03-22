@@ -227,9 +227,9 @@ d3-interpolate@1, d3-interpolate@1.1.2:
   dependencies:
     d3-color "1"
 
-d3-node@1.0.0:
-  version "1.0.0"
-  resolved "http://registry.npm.taobao.org/d3-node/download/d3-node-1.0.0.tgz#ff020441ba724d24dc948aec70570ad59b57a1f3"
+d3-node@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/d3-node/download/d3-node-1.0.1.tgz#639ae25746d5dae329db7841fd85736290062999"
   dependencies:
     d3 "4.4.0"
     jsdom "9.4.1"
@@ -552,8 +552,8 @@ hoek@2.x.x:
   resolved "http://registry.npm.taobao.org/hoek/download/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
 hosted-git-info@^2.1.4:
-  version "2.2.0"
-  resolved "http://registry.npm.taobao.org/hosted-git-info/download/hosted-git-info-2.2.0.tgz#7a0d097863d886c0fabbdcd37bf1758d8becf8a5"
+  version "2.4.1"
+  resolved "http://registry.npm.taobao.org/hosted-git-info/download/hosted-git-info-2.4.1.tgz#4b0445e41c004a8bd1337773a4ff790ca40318c8"
 
 http-signature@~1.1.0:
   version "1.1.1"
