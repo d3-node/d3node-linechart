@@ -15,6 +15,7 @@ function line({
   margin: _margin = { top: 20, right: 20, bottom: 60, left: 30 },
   lineWidth: _lineWidth = 1.5,
   lineColor: _lineColor = 'steelblue',
+  isCurve: _isCurve = true,
 } = {}) {
   const d3n = new D3Node({
     selector: _selector,
@@ -44,8 +45,9 @@ function line({
 
   const lineChart = d3.line()
       .x(d => x(d.key))
-      .y(d => y(d.value))
-      .curve(d3.curveBasis);
+      .y(d => y(d.value));
+
+  if (_isCurve) lineChart.curve(d3.curveBasis);
 
   x.domain(d3.extent(data, d => d.key));
   y.domain(d3.extent(data, d => d.value));
