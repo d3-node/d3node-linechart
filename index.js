@@ -40,7 +40,8 @@ function line({
 
   const lineChart = d3.line()
       .x(d => x(d.key))
-      .y(d => y(d.value));
+      .y(d => y(d.value))
+      .curve(d3.curveBasis);
 
   x.domain(d3.extent(data, d => d.key));
   y.domain(d3.extent(data, d => d.value));
