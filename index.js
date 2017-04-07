@@ -2,34 +2,38 @@ const D3Node = require('d3-node');
 
 function line({
   data,
-  selector: defaultSelector = '#chart',
-  container: defaultContainer = `
+  selector: _selector = '#chart',
+  container: _container = `
     <div id="container">
       <h2>Line Chart</h2>
       <div id="chart"></div>
     </div>
   `,
-  style: defaultStyle = '',
+  style: _style = '',
+  width: _width = 960,
+  height: _height = 500,
+  margin: _margin = { top: 20, right: 20, bottom: 60, left: 30 },
+  lineWidth: _lineWidth = 1.5,
+  lineColor: _lineColor = 'steelblue',
 } = {}) {
   const d3n = new D3Node({
-    selector: defaultSelector,
-    svgStyles: defaultStyle,
-    container: defaultContainer,
+    selector: _selector,
+    svgStyles: _style,
+    container: _container,
   });
 
   const d3 = d3n.d3;
 
-  const margin = { top: 20, right: 20, bottom: 60, left: 30 };
-  const width = 960 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const width = _width - _margin.left - _margin.right;
+  const height = _height - _margin.top - _margin.bottom;
 
   const svg = d3n.createSVG()
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
+        .attr('width', _width + _margin.left + _margin.right)
+        .attr('height', _height + _margin.top + _margin.bottom)
         .append('g')
-        .attr('transform', `translate(${margin.left}, ${margin.top})`);
+        .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
 
-  const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const g = svg.append('g').attr('transform', `translate(${_margin.left},${_margin.top})`);
 
 
   const x = d3.scaleLinear()
@@ -62,8 +66,8 @@ function line({
   g.append('path')
     .datum(data)
     .attr('fill', 'none')
-    .attr('stroke', 'steelblue')
-    .attr('stroke-width', 1.5)
+    .attr('stroke', _lineColor)
+    .attr('stroke-width', _lineWidth)
     .attr('d', lineChart);
 
   return d3n;
