@@ -29,13 +29,12 @@ function line({
   const height = _height - _margin.top - _margin.bottom;
 
   const svg = d3n.createSVG()
-        .attr('width', _width + _margin.left + _margin.right)
-        .attr('height', _height + _margin.top + _margin.bottom)
+        .attr('width', _width)
+        .attr('height', _height)
         .append('g')
         .attr('transform', `translate(${_margin.left}, ${_margin.top})`);
 
-  const g = svg.append('g').attr('transform', `translate(${_margin.left},${_margin.top})`);
-
+  const g = svg.append('g');
 
   const x = d3.scaleLinear()
       .rangeRound([0, width]);
