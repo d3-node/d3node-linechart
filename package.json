@@ -4,8 +4,7 @@
   "description": "D3-Node example - LineChart",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "build": "node ./example/index.js",
+    "start": "node ./example/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
