@@ -1,6 +1,6 @@
 {
   "name": "d3node-linechart",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "D3-Node example - LineChart",
   "main": "index.js",
   "scripts": {
