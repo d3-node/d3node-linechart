@@ -16,6 +16,8 @@ function line({
   lineWidth: _lineWidth = 1.5,
   lineColor: _lineColor = 'steelblue',
   isCurve: _isCurve = true,
+  tickSize: _tickSize = 5,
+  tickPadding: _tickPadding = 5,
 } = {}) {
   const d3n = new D3Node({
     selector: _selector,
@@ -36,33 +38,31 @@ function line({
 
   const g = svg.append('g');
 
-  const x = d3.scaleLinear()
+  const xScale = d3.scaleLinear()
       .rangeRound([0, width]);
-
-  const y = d3.scaleLinear()
+  const yScale = d3.scaleLinear()
       .rangeRound([height, 0]);
+  const xAxis = d3.axisBottom(xScale)
+        .tickSize(_tickSize)
+        .tickPadding(_tickPadding);
+  const yAxis = d3.axisLeft(yScale)
+        .tickSize(_tickSize)
+        .tickPadding(_tickPadding);
 
   const lineChart = d3.line()
-      .x(d => x(d.key))
-      .y(d => y(d.value));
+      .x(d => xScale(d.key))
+      .y(d => yScale(d.value));
 
   if (_isCurve) lineChart.curve(d3.curveBasis);
 
-  x.domain(d3.extent(data, d => d.key));
-  y.domain(d3.extent(data, d => d.value));
+  xScale.domain(d3.extent(data, d => d.key));
+  yScale.domain(d3.extent(data, d => d.value));
 
   g.append('g')
     .attr('transform', `translate(0, ${height})`)
-    .call(d3.axisBottom(x))
-    .select('.domain');
+    .call(xAxis);
 
-  g.append('g')
-    .call(d3.axisLeft(y))
-    .append('text')
-    .attr('fill', '#000')
-    .attr('transform', 'rotate(-90)')
-    .attr('y', 6)
-    .attr('dy', '0.71em');
+  g.append('g').call(yAxis);
 
   g.append('path')
     .datum(data)
