@@ -21,7 +21,7 @@
   "author": "geekplux <geekplux@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "d3-node": "^1.0.1",
+    "d3-node": "^1.0.2",
     "d3node-output": "0.0.1"
   }
 }
