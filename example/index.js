@@ -1,18 +1,16 @@
+const fs = require('fs');
 const output = require('d3node-output');
+const d3 = require('d3-node')().d3;
 const d3nLine = require('../');
 
-const gen = n => {
-  const data = [];
-
-  for (let i = 0; i < n; ++i) {
-    data.push({
-      key: i,
-      value: Math.max(10, Math.floor(Math.random() * 100)),
-    });
-  }
-
-  return data;
-};
+const parseTime = d3.timeParse('%d-%b-%y');
+const tsvString = fs.readFileSync('data/data.tsv').toString();
+const data = d3.tsvParse(tsvString, d => {
+  return {
+    key: parseTime(d.date),
+    value: +d.close
+  };
+});
 
 // create output files
-output('./example/output', d3nLine({ data: gen(20) }));
+output('./example/output', d3nLine({ data: data }));
