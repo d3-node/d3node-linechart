@@ -15,6 +15,7 @@ function line({
   margin: _margin = { top: 20, right: 20, bottom: 60, left: 30 },
   lineWidth: _lineWidth = 1.5,
   lineColor: _lineColor = 'steelblue',
+  lineColors: _lineColors = ['steelblue'],
   isCurve: _isCurve = true,
   tickSize: _tickSize = 5,
   tickPadding: _tickPadding = 5,
@@ -37,8 +38,10 @@ function line({
   const g = svg.append('g');
 
   const xScale = d3.scaleLinear()
+      .domain(data.allkeys ? d3.extent(data.allkeys) : d3.extent(data, d => d.key))
       .rangeRound([0, width]);
   const yScale = d3.scaleLinear()
+      .domain(data.allkeys ? [d3.min(data, d => d3.min(d, v => v.value)), d3.max(data, d => d3.max(d, v => v.value))] : d3.extent(data, d => d.value))
       .rangeRound([height, 0]);
   const xAxis = d3.axisBottom(xScale)
         .tickSize(_tickSize)
@@ -53,20 +56,19 @@ function line({
 
   if (_isCurve) lineChart.curve(d3.curveBasis);
 
-  xScale.domain(d3.extent(data, d => d.key));
-  yScale.domain(d3.extent(data, d => d.value));
-
   g.append('g')
     .attr('transform', `translate(0, ${height})`)
     .call(xAxis);
 
   g.append('g').call(yAxis);
 
-  g.append('path')
-    .datum(data)
+  g.append('g')
     .attr('fill', 'none')
-    .attr('stroke', _lineColor)
     .attr('stroke-width', _lineWidth)
+    .selectAll('path')
+    .data(data.allkeys ? data : [data])
+    .enter().append("path")
+    .attr('stroke', (d, i) => i < _lineColors.length ? _lineColors[i] : _lineColor)
     .attr('d', lineChart);
 
   return d3n;
