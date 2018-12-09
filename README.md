@@ -40,7 +40,7 @@ npm run build
 
 Data from file or web processed by d3 library.
 
-Single line is of the form `[ { key: x, value: y }, ...]`.  Multiline is of the form `[ "keys": [all, possible, x's, ...], [ { key: x, value: y }, ...], ...]`.
+Single line is of the form `[ { key: x, value: y }, ...]`.  Multiline is of the form `[ "allkeys": [all, possible, x's, ...], [ { key: x, value: y }, ...], ...]`.
 
 ##### selector
 
