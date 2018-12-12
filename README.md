@@ -15,7 +15,7 @@ const d3nLine = require('d3node-linechart');
 const line = d3nLine(data, selector, container, style)
 ```
 
-Check out the [example](./example) for usage.
+Check out the [examples](./examples) for usage.
 
 ##### Output the visualization result to a image
 
@@ -25,7 +25,8 @@ npm run build
 
 ## Output Preview (png):
 
-![chart](./example/output.png)
+![Single line chart](./examples/output.png)
+![Multi line chart](./examples/output-multiline.png)
 
 
 ## API
@@ -39,6 +40,24 @@ npm run build
 - Type: `Array`
 
 Data from file or web processed by d3 library.
+
+Single line is of the form `[ { key: x, value: y }, ...]`.
+
+Multiline is of the form `[ "allkeys": [all, possible, x's, ...], [ { key: x, value: y }, ...], ...]`.
+
+Examples:
+
+- Single line
+```
+[ { key: 0, value: 3 }, { key: 1, value: 2 }, { key: 2, value: 1 } ]
+```
+
+- Multiline
+```
+[ "allkeys": [0, 1, 2],
+   [ { key: 0, value: 3 }, { key: 1, value: 2 }, { key: 2, value: 1 } ],
+   [ { key: 0, value: 1 }, { key: 1, value: 2 }, { key: 2, value: 3 } ]]
+```
 
 ##### selector
 

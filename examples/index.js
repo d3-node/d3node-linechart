@@ -13,4 +13,4 @@ const data = d3.tsvParse(tsvString, d => {
 });
 
 // create output files
-output('./example/output', d3nLine({ data: data }));
+output('./examples/output', d3nLine({ data: data }), { width: 960, height: 550 });
