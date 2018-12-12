@@ -37,11 +37,12 @@ function line({
 
   const g = svg.append('g');
 
+  const { keys } = data;
   const xScale = d3.scaleLinear()
-      .domain(data.allkeys ? d3.extent(data.allkeys) : d3.extent(data, d => d.key))
+      .domain(keys ? d3.extent(keys) : d3.extent(data, d => d.key))
       .rangeRound([0, width]);
   const yScale = d3.scaleLinear()
-      .domain(data.allkeys ? [d3.min(data, d => d3.min(d, v => v.value)), d3.max(data, d => d3.max(d, v => v.value))] : d3.extent(data, d => d.value))
+      .domain(keys ? [d3.min(data, d => d3.min(d, v => v.value)), d3.max(data, d => d3.max(d, v => v.value))] : d3.extent(data, d => d.value))
       .rangeRound([height, 0]);
   const xAxis = d3.axisBottom(xScale)
         .tickSize(_tickSize)
@@ -66,7 +67,7 @@ function line({
     .attr('fill', 'none')
     .attr('stroke-width', _lineWidth)
     .selectAll('path')
-    .data(data.allkeys ? data : [data])
+    .data(keys ? data : [data])
     .enter().append("path")
     .attr('stroke', (d, i) => i < _lineColors.length ? _lineColors[i] : _lineColor)
     .attr('d', lineChart);
