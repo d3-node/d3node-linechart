@@ -15,7 +15,7 @@ const d3nLine = require('d3node-linechart');
 const line = d3nLine(data, selector, container, style)
 ```
 
-Check out the [example](./example) for usage.
+Check out the [examples](./examples) for usage.
 
 ##### Output the visualization result to a image
 
@@ -25,7 +25,8 @@ npm run build
 
 ## Output Preview (png):
 
-![chart](./example/output.png)
+![Single line chart](./examples/output.png)
+![Multi line chart](./examples/output-multiline.png)
 
 
 ## API
