@@ -7,9 +7,9 @@ function randomNumber(min, max) {
 
 function generateRandomData(lines = 3, n = 6, max = 100, min = 0) {
   const data = [];
-  data.keys = Array.from(new Array(n).keys());
+  data.allKeys = Array.from(new Array(n).keys());
   for (let i = 0; i < lines; ++i) {
-    data.push([...data.keys].map(key => ({ key, value: randomNumber(min, max) })));
+    data.push([...data.allKeys].map(key => ({ key, value: randomNumber(min, max) })));
   }
   return data;
 }
