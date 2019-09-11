@@ -17,10 +17,12 @@ const line = d3nLine(data, selector, container, style)
 
 Check out the [examples](./examples) for usage.
 
-##### Output the visualization result to a image
+##### Output the example visualization
 
 ```
-npm run build
+git clone <this repo url>
+npm install
+npm start
 ```
 
 ## Output Preview (png):
