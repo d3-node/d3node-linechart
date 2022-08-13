@@ -19,6 +19,8 @@ function line({
   isCurve: _isCurve = true,
   tickSize: _tickSize = 5,
   tickPadding: _tickPadding = 5,
+  xTickValues: _xTickValues = null,
+  yTickValues: _yTickValues = null,
 } = {}) {
   const d3n = new D3Node({
     selector: _selector,
@@ -46,9 +48,11 @@ function line({
       .rangeRound([height, 0]);
   const xAxis = d3.axisBottom(xScale)
         .tickSize(_tickSize)
+        .tickValues(_xTickValues)
         .tickPadding(_tickPadding);
   const yAxis = d3.axisLeft(yScale)
         .tickSize(_tickSize)
+        .tickValues(_yTickValues)
         .tickPadding(_tickPadding);
 
   const lineChart = d3.line()
